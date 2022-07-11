@@ -317,7 +317,9 @@ body {
 
 #coa {
   font-family: protipo, sans-serif;
-  margin-bottom: 0%;
+  max-width: 1600px;
+  margin: auto;
+  margin-bottom:2.5%;
 }
 
 #email {
@@ -461,4 +463,14 @@ footer p {
 
 .hide{
   display: none !important;
+}
+
+.home-container{
+  max-width:900px!important;
+}
+
+.coa-text{
+
+  width:fit-content;
+  margin-left:5%;
 }
