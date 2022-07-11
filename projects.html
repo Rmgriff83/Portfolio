@@ -109,431 +109,38 @@
     <div class="container mx-auto">
 
         <div class="row justify-content-center">
-            <!-- project card 0 -->
+           
 
             <!--MicroData Schema Added  -->
             <!-- Added Creative Work itemscope to indicate personal creative work--webpage -->
-            <div itemscope itemtype="http://schema.org/WebPage" class="card col-xs-6 col-sm-6 col-lg-4 dev">
+            <div v-for="(project,i) in projects" :key="i" itemscope :itemtype="project.itemType" class="card col-xs-6 col-sm-6 col-lg-4" :class="project.video ? 'videoWork' : '', project.class">
                 <div class="card-cont">
 
                     <!-- Added itemprops to identify the url and image  -->
-                    <a itemprop="url" target="_blank" href="#"><img itemprop="image" class="card-img-top img-fluid"
-                            src="img/elo-thumbnail.png" loading="lazy"></a>
-                    <div class="p-tag">Develop</div>
+                    <a v-if="!project.video" itemprop="url" target="_blank" :href="project.url"><img itemprop="image" class="card-img-top img-fluid"
+                            :src="project.img" loading="lazy"></a>
+
+                    <!-- fix for video popups -->
+                    <img v-if="project.video" @click="handleVids(project.videoUrl)" itemprop="image" class="card-img-top img-fluid"
+                            :src="project.img" loading="lazy">
+
+                    <div class="p-tag">{{ project.tag }}</div>
                     <!-- added itemprop to identify name of work -->
-                    <h3 itemprop="name" class="card-title text-center">"ELO Rebuild"
+                    <h3 itemprop="name" class="card-title text-center">"{{ project.title }}"
                     </h3>
                     <h6 class="text-center projects-skills">
 
                         <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
                             because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-                        Made with:
-                        <span itemprop="specialty">Bootstrap, </span>
-                        <span itemprop="specialty">HTML5, </span>
-                        <span itemprop="specialty">CSS3, </span>
-                        <span itemprop="specialty">JQuery, </span>
-                        <span itemprop="specialty">JavaScript </span>
-                        <span itemprop="specialty">| XD</span>
+                        
+                        <span v-for="(item,j) in project.specialties" :key="j" itemprop="specialty" style="font-weight:bold;margin-top:5%;font-size:.75em;text-decoration: underline;">{{ item }}&nbsp;</span>
+                        
 
                     </h6>
 
                     <!-- Added itemprop to indicate the description of my work -->
                     <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        Working together with a group of 5 other developers in the capstone senior semiar course,
-                        we developed low and high fidelity prototypes as well as a fully responsive web page for the
-                        ELO
-                        Organization.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- project card 1 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--webpage -->
-            <div itemscope itemtype="http://schema.org/WebPage" class="card col-xs-6 col-sm-6 col-lg-4 dev">
-                <div class="card-cont">
-
-                    <!-- Added itemprops to identify the url and image  -->
-                    <a itemprop="url" target="_blank" href="https://dtc-wsuv.org/rgriffus20/hypermedia_game/"><img
-                            itemprop="image" class="card-img-top img-fluid" src="img/Hmedia-1.gif" loading="lazy"></a>
-                    <div class="p-tag">Develop</div>
-
-                    <!-- added itemprop to identify name of work -->
-                    <h3 itemprop="name" class="card-title text-center">"2084"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">HTML5, </span>
-                        <span itemprop="specialty">CSS3, </span>
-                        <span itemprop="specialty">JavaScript </span>
-                        <span itemprop="specialty">| After Effects, </span>
-                        <span itemprop="specialty">Illustrator, </span>
-                        <span itemprop="specialty">Fresco </span>
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        This is a short point and click hypermedia narrative game I made over the course of a few weeks
-                        for Dtc 354 in the Summer of
-                        2020.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- project card 2 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--webpage -->
-
-            <div itemscope itemtype="http://schema.org/WebPage" class="card col-xs-6 col-sm-6 col-lg-4 dev">
-                <div class="card-cont">
-
-                    <!-- Added itemprops to identify the url and image  -->
-
-                    <a itemprop="url" target="_blank" href="https://dtc-wsuv.org/rgriffus20/map"><img itemprop="image"
-                            class="card-img-top img-fluid" src="img/p-map.jpg" loading="lazy"></a>
-                    <div class="p-tag">Develop</div>
-
-                    <!-- added itemprop to identify name of work -->
-
-                    <h3 itemprop="name" class="card-title text-center">"NW Topography Visualized"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">Mapbox API, </span>
-                        <span itemprop="specialty">HTML5, </span>
-                        <span itemprop="specialty">CSS3, </span>
-                        <span itemprop="specialty">jQuery </span>
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        Made for Advanced Multimedia Authoring. I used the Mapbox API to extrude the
-                        elevation information for a 3d effect.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- project card 4 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--webpage -->
-
-            <div itemscope itemtype="http://schema.org/WebPage" class="card col-xs-6 col-sm-6 col-lg-4 dev">
-                <div class="card-cont">
-
-                    <!-- Added itemprops to identify the url and image  -->
-
-                    <a itemprop="url" target="_blank" href="https://nba-today.vercel.app/"><img
-                            itemprop="image" class="card-img-top img-fluid" src="img/nba-today-img.jpg" loading="lazy"></a>
-                    <div class="p-tag">Develop</div>
-
-                    <!-- added itemprop to identify name of work -->
-
-                    <h3 itemprop="name" class="card-title text-center">"NBA Today"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">React, </span>
-                        <span itemprop="specialty">HTML5, </span>
-                        <span itemprop="specialty">CSS3, </span>
-                        <span itemprop="specialty">JavaScript, </span>
-                        <span itemprop="specialty">BallDontLie API, </span>
-                        <span itemprop="specialty">Material UI </span>
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        This is a responsive React app that tracks the day's NBA games and displays the scores. Powered with
-                        the BallDontLie free API. 
-                    </p>
-
-                </div>
-
-            </div>
-            
-            <!-- project card 6 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--VisualArtwork -->
-
-            <div itemscope itemtype="http://schema.org/VisualArtwork" class="card col-xs-6 col-sm-6 col-lg-4 design">
-                <div class="card-cont">
-
-                    <!-- Added itemprop to indicate image of visual work
-                     -->
-                    <img itemprop="image" class="card-img-top img-fluid videoWork" src="img/mamba.GIF" loading="lazy">
-                    <div class="p-tag">Design</div>
-
-                    <!-- added itemprop to identify name of work -->
-
-                    <h3 itemprop="name" class="card-title text-center">"Mamba"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">After Effects, </span>
-                        <span itemprop="specialty">Fresco </span>
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-                    <!-- Added itemprop in span element to indicate art medium -->
-
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        I made this short <span itemprop="artMedium">rotoscope animation</span> in Spring 2020 for my 2d
-                        animation class. In total there
-                        were over a hundred separate drawings.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- project card 7 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--webpage -->
-
-            <div itemscope itemtype="http://schema.org/WebPage" class="card col-xs-6 col-sm-6 col-lg-4 dev">
-                <div class="card-cont">
-
-                    <!-- Added itemprops to identify the url and image  -->
-
-                    <a itemprop="url" target="_blank" href="https://scalar.usc.edu/works/traversing-myst/index"><img
-                            itemprop="image" class="card-img-top img-fluid" src="img/myst.jpg" loading="lazy"></a>
-                    <div class="p-tag">Develop</div>
-
-                    <!-- added itemprop to identify name of work -->
-
-                    <h3 itemprop="name" class="card-title text-center">"Traversing Myst"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">HTML5, </span>
-                        <span itemprop="specialty">CSS3, </span>
-                        <span itemprop="specialty">Scalar </span>
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        With a team of other developers, we designed and set up the framework
-                        for this hypertext work in my video games studies course.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- project card 8 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--webpage -->
-
-            <div itemscope itemtype="http://schema.org/WebPage" class="card col-xs-6 col-sm-6 col-lg-4 design">
-                <div class="card-cont">
-
-                    <!-- Added itemprops to identify the url and image  -->
-                    <a itemprop="url" target="_blank" href="https://dtc-wsuv.org/rgriffus20/lightbox_comic"><img
-                            itemprop="image" class="card-img-top img-fluid" src="img/Thenight.png" loading="lazy"></a>
-                    <div class="p-tag">Design</div>
-
-                    <!-- added itemprop to identify name of work -->
-                    <h3 itemprop="name" class="card-title text-center">"The Night"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">HTML5, </span>
-                        <span itemprop="specialty">CSS3, </span>
-                        <span itemprop="specialty">JavaScript </span>
-                        <span itemprop="specialty">| Fresco </span>
-
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        This is a web based sequential comic made for my digital storytelling class. My intent
-                        was to use only pictures to tell a story.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- project card 5 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--webpage -->
-
-            <div itemscope itemtype="http://schema.org/WebPage" class="card col-xs-6 col-sm-6 col-lg-4 dev">
-                <div class="card-cont">
-
-                    <!-- Added itemprops to identify the url and image  -->
-
-                    <a itemprop="url" target="_blank" href="https://my-app3.vercel.app/"><img itemprop="image"
-                            class="card-img-top img-fluid" src="img/p-todo.jpg" loading="lazy"></a>
-                    <div class="p-tag">Develop</div>
-
-                    <!-- added itemprop to identify name of work -->
-
-                    <h3 itemprop="name" class="card-title text-center">"To-Do App"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">React, </span>
-                        <span itemprop="specialty">Dexie.js, </span>
-                        <span itemprop="specialty">JavaScript, </span>
-                        <span itemprop="specialty">CSS3 </span>
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        Coordinating in Github with a group of two other people, we built and designed a simple to do
-                        app
-                        using indexedDB in the browser.
-                    </p>
-
-                </div>
-            </div>
-
-
-            <!-- project card 9 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--VisualArtwork -->
-
-            <div itemscope itemtype="http://schema.org/VisualArtwork" class="card col-xs-6 col-sm-6 col-lg-4 design">
-                <div class="card-cont">
-
-                    <!-- Added itemprop to indicate image of visual work
-                                         -->
-
-                    <img itemprop="image" class="card-img-top img-fluid videoWork" src="img/treeman.PNG" loading="lazy">
-                    <div class="p-tag">Design</div>
-
-                    <!-- added itemprop to identify name of work -->
-
-                    <h3 itemprop="name" class="card-title text-center">"Treeman Cometh"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">After Effects, </span>
-                        <span itemprop="specialty">Illustrator, </span>
-                        <span itemprop="specialty">Animate, </span>
-                        <span itemprop="specialty">Fresco, </span>
-                        <span itemprop="specialty">Premiere Pro </span>
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-                    <!-- Added itemprop in span element to indicate art medium -->
-
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        This is a short <span itemprop="artMedium">animation</span> I did with lip-synching to audio for
-                        my 2d animation class.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- project card 10 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--webpage -->
-
-            <div itemscope itemtype="http://schema.org/WebPage" class="card col-xs-6 col-sm-6 col-lg-4 dev">
-                <div class="card-cont">
-
-                    <!-- Added itemprops to identify the url and image  -->
-
-                    <a itemprop="url" target="_blank" href="https://dtc-wsuv.org/rgriffus20/recipe/"><img
-                            itemprop="image" class="card-img-top img-fluid" src="img/recipe.jpg" loading="lazy"></a>
-                    <div class="p-tag">Develop</div>
-
-                    <!-- added itemprop to identify name of work -->
-
-                    <h3 itemprop="name" class="card-title text-center">"Recipe Project"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">HTML5, </span>
-                        <span itemprop="specialty">CSS3, </span>
-                        <span itemprop="specialty">Css Grid </span>
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-                    <!-- Added itemprop in span element to indicate art medium -->
-
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        I made this fully responsive recipe <span itemprop="artMedium">webpage</span> with Css Grid in
-                        my multimedia authoring class.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- project card 11 -->
-
-            <!--MicroData Schema Added  -->
-            <!-- Added Creative Work itemscope to indicate personal creative work--VisualArtwork -->
-
-            <div itemscope itemtype="http://schema.org/VisualArtwork" class="card col-xs-6 col-sm-6 col-lg-4 design">
-                <div class="card-cont">
-
-                    <!-- Added itemprop to indicate image of visual work
-                                                             -->
-
-                    <img itemprop="image" class="card-img-top img-fluid videoWork" src="img/psa.jpg" loading="lazy">
-                    <div class="p-tag">Design</div>
-
-                    <!-- added itemprop to identify name of work -->
-
-                    <h3 itemprop="name" class="card-title text-center">"Second Step Housing PSA"
-                    </h3>
-
-                    <!-- added multiple span elements to this list of skills to identify the specialties of the page content.
-                        because this is for my portfolio, I want the Serp to associate these specialty skills with me. -->
-
-                    <h6 class="text-center projects-skills">Made with:
-                        <span itemprop="specialty">After Effects, </span>
-                        <span itemprop="specialty">Illustrator, </span>
-                        <span itemprop="specialty">Premiere Pro </span>
-                    </h6>
-
-                    <!-- Added itemprop to indicate the description of my work -->
-                    <!-- Added itemprop in span element to indicate art medium -->
-
-                    <p itemprop="description" style="font-size: 0.8em;" class="text-center">
-                        This is a <span itemprop="artMedium">video</span> public service announcement made for the
-                        Second Step Housing non-profit in
-                        Fall '19.
+                        {{ project.description }}
                     </p>
 
                 </div>
@@ -549,7 +156,7 @@
         <div class="row col-12 mx-auto" style="margin: 0%;">
             <p class="mx-auto text-center">
                 Designed and Built by Ross Griffus <br>
-                Feb. 2021
+                July 2022
             </br>
             <a  style="font-size: 1.5em;" href="https://www.linkedin.com/in/ross-griffus-65905a7b/"
                     class="fa fa-linkedin"></a>
@@ -562,7 +169,7 @@
 
   <script src="./app.js"></script>
 
-  <script>
+  <script defer>
     $(document).ready(function () {
         
 
@@ -591,94 +198,6 @@
     });
 </script>
 
-<!-- show video script -->
-<script>
-
-    const lightbox = document.createElement('div');
-    lightbox.id = 'lightbox';
-    document.body.appendChild(lightbox);
-
-    let vidArr = ['vids/mamba.mp4', 'vids/treeman.mp4', 'vids/psa.mp4'];
-
-    let videos = document.getElementsByClassName("videoWork");
-
-    // mamba
-    videos[0].addEventListener('click', () => {
-        lightbox.classList.add('active');
-        let vidShow = document.createElement('video');
-        vidShow.src = vidArr[0];
-        vidShow.controls = true;
-
-        lightbox.appendChild(vidShow);
-        vidShow.autoplay = 'true';
-
-        // removes vidshown element after its clicked off
-        while (lightbox.firstChild) {
-            lightbox.removeChild(lightbox.firstChild)
-
-        }
-        lightbox.appendChild(vidShow);
-
-        // pause video if you click off it
-        lightbox.addEventListener('click', () => {
-            vidShow.pause();
-        });
-    });
-
-    // treeman
-    videos[1].addEventListener('click', () => {
-        lightbox.classList.add('active');
-        let vidShow = document.createElement('video');
-        vidShow.src = vidArr[1];
-        vidShow.controls = true;
-
-        lightbox.appendChild(vidShow);
-        vidShow.autoplay = 'true';
-
-        // removes vidshown element after its clicked off
-        while (lightbox.firstChild) {
-            lightbox.removeChild(lightbox.firstChild)
-        }
-        lightbox.appendChild(vidShow);
-        // pause video if you click off it
-        lightbox.addEventListener('click', () => {
-            vidShow.pause();
-        });
-    });
-
-    // psa
-    videos[2].addEventListener('click', () => {
-        lightbox.classList.add('active');
-        let vidShow = document.createElement('video');
-        vidShow.src = vidArr[2];
-        vidShow.controls = true;
-
-        lightbox.appendChild(vidShow);
-        vidShow.autoplay = 'true';
-
-        // removes vidshown element after its clicked off
-        while (lightbox.firstChild) {
-            lightbox.removeChild(lightbox.firstChild)
-        }
-        lightbox.appendChild(vidShow);
-        // pause video if you click off it
-        lightbox.addEventListener('click', () => {
-            vidShow.pause();
-        });
-    });
-
-    // click off the vidshown element to hide lightbox
-    lightbox.addEventListener('click', e => {
-
-        if (e.target !== e.currentTarget) return
-
-        lightbox.classList.remove('active')
-
-
-    });
-
-
-</script>
 </body>
 
 </html>

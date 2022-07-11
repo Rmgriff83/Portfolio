@@ -162,6 +162,39 @@
                     <!-- MicroData schema added -->
                     <!-- I embedded a creativeWork prop here to indicate a work associated with the person type -->
 
+                    <li itemscope itemtype="http://schema.org/WebSite" class="glide__slide">
+                        <div class="recent_content_container">
+                            <div
+                            style="position: absolute; width: 100%; height: 100%; background-color: black; opacity: 0.3;">
+
+                        </div>
+                            <div class="highlight-box">
+                                <p class="recent-title">Recent Projects<br>
+                                </p>
+                            </div>
+                            <div class="highlight-btn-box">
+
+                                <!-- added itemprop to indicate name of work -->
+
+                                <h5 itemprop="name" class="highlight-title">Skeies.com</h5>
+
+                                <!-- Added prop to indicate url of work -->
+
+                                <a itemprop="url" target="_blank" href="https://skeies.com/"><button
+                                        class="btn-primary highlight-btn">View
+                                        Site</button></a>
+                            </div>
+                           
+
+                            <!-- Added prop to indicate img of work -->
+                            <img itemprop="image" class="img-fluid slider-imgs" src="img/Skeies-Header.png"
+                                alt="Skeie's Jewelers website" loading="lazy">
+                        </div>
+                    </li>
+
+                    <!-- MicroData schema added -->
+                    <!-- I embedded a creativeWork prop here to indicate a work associated with the person type -->
+
                     <li itemscope itemtype="http://schema.org/WebPage" class="glide__slide">
                         <div
                             style="position: absolute; width: 100%; height: 100%; background-color: black; opacity: 0.3;">
@@ -175,12 +208,11 @@
 
                             <!-- added itemprop to indicate name of work -->
 
-                            <h5 itemprop="name" class="highlight-title">"ELO Rebuild"</h5>
+                            <h5 itemprop="name" class="highlight-title">"ELO Rebuild V1"</h5>
 
                             <!-- Added prop to indicate url of work and workStatus-->
-                            <a itemprop="url" target="_blank" href="#"><button itemprop="creativeWorkStatus"
-                                    class="highlight-btn">Not
-                                    Live</button></a>
+                            <a itemprop="url" target="_blank" href="https://the-next.eliterature.org/"><button itemprop="creativeWorkStatus"
+                                    class="highlight-btn">View Site</button></a>
                         </div>
 
                         <!-- Added prop to indicate image of work -->
@@ -225,34 +257,7 @@
                             alt="Original work entitled 2084" loading="lazy">
                     </li>
 
-                    <!-- MicroData schema added -->
-                    <!-- I embedded a creativeWork prop here to indicate a work associated with the person type -->
-
-                    <li itemscope itemtype="http://schema.org/WebPage" class="glide__slide">
-                        <div class="recent_content_container">
-                            <div class="highlight-box">
-                                <p class="recent-title">Recent Projects <br>
-                                </p>
-                            </div>
-                            <div class="highlight-btn-box">
-
-                                <!-- added itemprop to indicate name of work -->
-
-                                <h5 itemprop="name" class="highlight-title">"NW Topology Visualized"</h5>
-
-                                <!-- Added prop to indicate url of work -->
-
-                                <a itemprop="url" target="_blank" href="https://dtc-wsuv.org/rgriffus20/map"><button
-                                        class="btn-primary highlight-btn">View
-                                        work</button></a>
-                            </div>
-                           
-
-                            <!-- Added prop to indicate img of work -->
-                            <img itemprop="image" class="img-fluid slider-imgs" src="img/map.jpg"
-                                alt="Mapbox api project" loading="lazy">
-                        </div>
-                    </li>
+                    
 
                     <!-- MicroData schema added -->
                     <!-- I embedded a creativeWork prop here to indicate a work associated with the person type -->
@@ -337,7 +342,7 @@
             <p style="font-size: 2em;font-weight: bold;">Thanks for Visiting!
         </p>
             <br>
-            &nbsp; &nbsp; &nbsp;I am a highly passionate web developer with a broad array of skills who is always willing to
+            &nbsp; &nbsp; &nbsp;I am a highly passionate Web Developer & Designer with a broad array of skills who is always willing to
             go the extra mile to make a project great. I currently work for <a href="https://growthdyn.com/" style="color:black"><span style="text-decoration: underline">Growth Dynamics</span></a> in Eugene, Oregon as a <span style="font-style: italic;">Full Stack Web Developer</span>. Here's a breakdown of my <span style="font-weight:bold;font-size: 1.2em;">current toolbelt:</span></p>
     </div>    
     <div class="container home-container">
@@ -347,54 +352,20 @@
             <!--  -->
             <!-- I added an alt tag to the i elements to communicate the icon's intent to the search engine. 
              -->
-            <div class="skills_card card col-sm-12 col-md-6 col-lg-4" id="dev-skills-icons">
-                <i alt="development skill icon" class="fa fa-code text-center"
+            <div v-for="(skill, i) in skills" :key="i" class="skills_card card col-sm-12 col-md-6 col-lg-4 mx-auto">
+                <i alt="development skill icon" class="fa text-center" :class="skill.icon"
                     style="font-size:98px;color:#575757;  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);"></i>
-                <h3 class="card-title text-center skills-title">Development</h3>
+                <h3 class="card-title text-center skills-title">{{ skill.type }}</h3>
                 <h6 class="text-center">Skills:</h5>
 
                     <!-- Added knowsAbout property to each item in this list to indicate the person knows about these things -->
 
 
                     <p class="text-center skills_content">
-                        <span v-for="skill in devSkills" itemprop="knowsAbout">{{ skill }} &nbsp; </span>
+                        <span v-for="(item,j) in skill.list" :key="j" itemprop="knowsAbout">{{ item }} &nbsp; </span>
                     </p>
 
             </div>
-            <!-- card 2 -->
-            <div class=" skills_card card col-sm-12 col-md-6 col-lg-4">
-
-                <i alt="design skill icon" class="fa fa-object-ungroup text-center"
-                    style="font-size:98px;color:#575757;  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);"></i>
-                <h3 class="card-title text-center skills-title">Design</h3>
-                <h6 class="text-center">Skills:</h5>
-
-                    <!-- Added knowsAbout property to each item in this list to indicate the person knows about these things -->
-
-                    <p class="text-center skills_content">
-                        <span v-for="skill in desSkills" itemprop="knowsAbout">{{skill}} &nbsp; </span>
-                        
-
-                    </p>
-
-            </div>
-            <!-- card 3 -->
-            <div class="skills_card card col-sm-12 col-md-6 col-lg-4 mx-auto">
-                <!-- <i alt="Workflow skill icon" class="fa fa-code text-center" style="font-size:48px;color:red"></i> -->
-                <i alt="Workflow skill icon" class="skills_icons fa fa-sitemap text-center"
-                    style="font-size:98px;color:#575757;  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);"></i>
-                <h3 class="card-title text-center skills-title">Workflow</h3>
-                <h6 class="text-center">Skills:</h5>
-
-                    <!-- Added knowsAbout property to each item in this list to indicate the person knows about these things -->
-
-                    <p class="text-center skills_content">
-                        <span v-for="skill in wrkSkills" itemprop="knowsAbout">{{skill}}&nbsp; </span>
-                        
-                    </p>
-
-            </div>
-
         </div>
     </div>
 

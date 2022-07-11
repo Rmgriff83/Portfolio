@@ -291,11 +291,6 @@ body {
   /* webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.8); */
 }
 
-/* #dev-skills-icons{
-     background-image: url("img/dev-skills.png");
-     background-repeat: no-repeat;
-     background-position: left;
-} */
 .skills-title {
   border-bottom: 3px solid lightgray;
   max-width: 75%;
@@ -473,4 +468,13 @@ footer p {
 
   width:fit-content;
   margin-left:5%;
+}
+
+.lightbox-x{
+
+  color:white;
+  font-size: 6em;
+  position:absolute;
+  top:10%;
+  right:5%;
 }
