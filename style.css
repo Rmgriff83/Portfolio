@@ -478,3 +478,18 @@ footer p {
   top:10%;
   right:5%;
 }
+
+.about-banner{
+  width: 100%;
+  max-width:1350px;
+  background-image: url('./img/about-me-banner.jpg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode:color-dodge;
+  -webkit-mask-image: linear-gradient(to top, transparent 25%, black 75%);
+  mask-image: linear-gradient(to top, transparent 25%, black 75%);
+  height:500px;
+  margin:auto;
+
+}

@@ -54,6 +54,26 @@ const app = Vue.createApp({
       ],
       projects: [
         {
+          title: "Skeies.com",
+          img: "img/skeies-thumbnail.jpg",
+          url: "https://skeies.com",
+          tag: "Dev/Des",
+          class: "dev design",
+          itemType: "http://schema.org/WebSite",
+          specialties: [
+            "HTML5",
+            "CSS3",
+            "Shopify Liquid",
+            "JQuery",
+            "JavaScript",
+            "XD",
+            "Photoshop",
+          ],
+          description:
+            "I worked for Skeie's Jewelers in Eugene, Or from April 2021 through July 2022 as Web Developer & Administrator. I gained excellent real-world experience building custom sections in a CMS environment along with analyzing data and managing Google Ads.",
+          video: false,
+        },
+        {
           title: "ELO Rebuild",
           img: "img/elo-thumbnail.png",
           url: "https://the-next.eliterature.org/",
