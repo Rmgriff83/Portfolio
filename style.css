@@ -185,9 +185,12 @@ body {
   position: relative;
   transform: translate(-22px, 0);
 }
+#hamburger-menu{
+  display: block;
+}
 
 #hamburger-menu-close {
-  display: none;
+  display: block;
   font-size: 2em;
 }
 
@@ -227,30 +230,29 @@ body {
 }
 
 .highlight-btn-box {
-  display: grid;
-  grid-template-columns: 1fr;
   text-align: center;
-  /* border:1px solid red; */
-  margin-left: 5.5%;
-  margin-top: 6.1%;
   position: absolute;
+  bottom:25%;
+  margin-left: 10%;
   font-family: bebas-neue, sans-serif;
-
-  background-color: #575757;
-  transform: translate(0px, -100px);
 }
 
 /* fix highlightbtn box on sm screens */
-@media only screen and (min-width: 300px) and (max-width: 540px) {
+@media (max-width: 600px) {
   .highlight-btn-box {
-    transform: translate(0, 20px);
+    bottom:25%;
+    margin-left: 8%;
+  }
+}
+
+@media (max-width: 415px) {
+  .highlight-btn-box {
+    bottom:25%;
+    margin-left: 3.5%;
   }
 }
 .highlight-title {
-  position: absolute;
   color: white;
-  transform: translate(0, -140%);
-  width: 200px;
   font-size: 30px;
   /* -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.8); */
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
@@ -264,7 +266,6 @@ body {
 }
 
 .highlight-btn {
-  position: absolute;
   width: 200px;
   border: 1px solid #65ffe9;
   background-color: #575757;
@@ -273,7 +274,7 @@ body {
   webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-  transform: translate(0, -20%);
+ 
 }
 
 .highlight-btn:hover {
@@ -456,4 +457,8 @@ footer p {
 
 .videoWork {
   cursor: pointer;
+}
+
+.hide{
+  display: none !important;
 }

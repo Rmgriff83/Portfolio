@@ -47,6 +47,10 @@
     <link rel="stylesheet" href="https://use.typekit.net/ukn2vfn.css">
     <!-- protipo font -->
     <link rel="stylesheet" href="https://use.typekit.net/ukn2vfn.css">
+
+    <!-- vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
+
 </head>
 
 <!-- Microdata schema Added -->
@@ -55,15 +59,16 @@
 <body itemscope itemtype="http://schema.org/Collection">
     <!-- Header elements -->
 
+  <div id="app">
     <nav id="header" class="navbar navbar-expand-md navbar-light sticky-top col-12">
         <div class="container">
             <div class="container-fluid">
                 <a id="logo" class="navbar-brand" href="./index.html"><img src="img/logo.png"></a>
 
-                <button id="menu-btn" style="padding: 0px;" class="navbar-toggler" type="button" data-toggle="collapse"
+                <button @click="handleMenu(mobile_header)" id="menu-btn" style="padding: 0px;" class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive">
-                    <span id="hamburger-menu" class="navbar-toggler-icon"></span>
-                    <span id="hamburger-menu-close" aria-hidden="true">&times;</span>
+                    <span id="hamburger-menu" class="navbar-toggler-icon" v-bind:class="!mobile_header && 'hide'"></span>
+                    <span id="hamburger-menu-close" v-bind:class="mobile_header && 'hide'" aria-hidden="true">&times;</span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
@@ -553,138 +558,127 @@
         </div>
 
     </footer>
+  </div>
 
+  <script src="./app.js"></script>
 
-    <script>
+  <script>
+    $(document).ready(function () {
+        
 
+        //filter functions
 
-        $(document).ready(function () {
-            //animate hamburger menu icon
-            $('#hamburger-menu').on('click', function () {
-                event.preventDefault();
-                $('#hamburger-menu').css({ display: 'none' });
-                $('#hamburger-menu-close').css({ display: 'block' });
-            });
-            //animate hamburger menu close icon
-            $('#hamburger-menu-close').on('click', function () {
-                event.preventDefault();
-                $('#hamburger-menu-close').css({ display: 'none' });
-                $('#hamburger-menu').css({ display: 'block' });
-            });
-
-            //filter functions
-
-            //dev
-            $('#dev-btn').on('click', function () {
-                $('.design').fadeOut();
-                $('.dev').fadeIn();
-
-            });
-
-            //design
-            $('#design-btn').on('click', function () {
-                $('.dev').fadeOut();
-                $('.design').fadeIn();
-
-            });
-
-            //show all
-            $('#all-btn').on('click', function () {
-                $('.dev').fadeIn();
-                $('.design').fadeIn();
-
-            });
-        });
-    </script>
-
-    <!-- show video script -->
-    <script>
-
-        const lightbox = document.createElement('div');
-        lightbox.id = 'lightbox';
-        document.body.appendChild(lightbox);
-
-        let vidArr = ['vids/mamba.mp4', 'vids/treeman.mp4', 'vids/psa.mp4'];
-
-        let videos = document.getElementsByClassName("videoWork");
-
-        // mamba
-        videos[0].addEventListener('click', () => {
-            lightbox.classList.add('active');
-            let vidShow = document.createElement('video');
-            vidShow.src = vidArr[0];
-            vidShow.controls = true;
-
-            lightbox.appendChild(vidShow);
-            vidShow.autoplay = 'true';
-
-            // removes vidshown element after its clicked off
-            while (lightbox.firstChild) {
-                lightbox.removeChild(lightbox.firstChild)
-
-            }
-            lightbox.appendChild(vidShow);
-
-            // pause video if you click off it
-            lightbox.addEventListener('click', () => {
-                vidShow.pause();
-            });
-        });
-
-        // treeman
-        videos[1].addEventListener('click', () => {
-            lightbox.classList.add('active');
-            let vidShow = document.createElement('video');
-            vidShow.src = vidArr[1];
-            vidShow.controls = true;
-
-            lightbox.appendChild(vidShow);
-            vidShow.autoplay = 'true';
-
-            // removes vidshown element after its clicked off
-            while (lightbox.firstChild) {
-                lightbox.removeChild(lightbox.firstChild)
-            }
-            lightbox.appendChild(vidShow);
-            // pause video if you click off it
-            lightbox.addEventListener('click', () => {
-                vidShow.pause();
-            });
-        });
-
-        // psa
-        videos[2].addEventListener('click', () => {
-            lightbox.classList.add('active');
-            let vidShow = document.createElement('video');
-            vidShow.src = vidArr[2];
-            vidShow.controls = true;
-
-            lightbox.appendChild(vidShow);
-            vidShow.autoplay = 'true';
-
-            // removes vidshown element after its clicked off
-            while (lightbox.firstChild) {
-                lightbox.removeChild(lightbox.firstChild)
-            }
-            lightbox.appendChild(vidShow);
-            // pause video if you click off it
-            lightbox.addEventListener('click', () => {
-                vidShow.pause();
-            });
-        });
-
-        // click off the vidshown element to hide lightbox
-        lightbox.addEventListener('click', e => {
-
-            if (e.target !== e.currentTarget) return
-
-            lightbox.classList.remove('active')
-
+        //dev
+        $('#dev-btn').on('click', function () {
+            $('.design').fadeOut();
+            $('.dev').fadeIn();
 
         });
 
+        //design
+        $('#design-btn').on('click', function () {
+            $('.dev').fadeOut();
+            $('.design').fadeIn();
 
-    </script>
+        });
+
+        //show all
+        $('#all-btn').on('click', function () {
+            $('.dev').fadeIn();
+            $('.design').fadeIn();
+
+        });
+    });
+</script>
+
+<!-- show video script -->
+<script>
+
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    document.body.appendChild(lightbox);
+
+    let vidArr = ['vids/mamba.mp4', 'vids/treeman.mp4', 'vids/psa.mp4'];
+
+    let videos = document.getElementsByClassName("videoWork");
+
+    // mamba
+    videos[0].addEventListener('click', () => {
+        lightbox.classList.add('active');
+        let vidShow = document.createElement('video');
+        vidShow.src = vidArr[0];
+        vidShow.controls = true;
+
+        lightbox.appendChild(vidShow);
+        vidShow.autoplay = 'true';
+
+        // removes vidshown element after its clicked off
+        while (lightbox.firstChild) {
+            lightbox.removeChild(lightbox.firstChild)
+
+        }
+        lightbox.appendChild(vidShow);
+
+        // pause video if you click off it
+        lightbox.addEventListener('click', () => {
+            vidShow.pause();
+        });
+    });
+
+    // treeman
+    videos[1].addEventListener('click', () => {
+        lightbox.classList.add('active');
+        let vidShow = document.createElement('video');
+        vidShow.src = vidArr[1];
+        vidShow.controls = true;
+
+        lightbox.appendChild(vidShow);
+        vidShow.autoplay = 'true';
+
+        // removes vidshown element after its clicked off
+        while (lightbox.firstChild) {
+            lightbox.removeChild(lightbox.firstChild)
+        }
+        lightbox.appendChild(vidShow);
+        // pause video if you click off it
+        lightbox.addEventListener('click', () => {
+            vidShow.pause();
+        });
+    });
+
+    // psa
+    videos[2].addEventListener('click', () => {
+        lightbox.classList.add('active');
+        let vidShow = document.createElement('video');
+        vidShow.src = vidArr[2];
+        vidShow.controls = true;
+
+        lightbox.appendChild(vidShow);
+        vidShow.autoplay = 'true';
+
+        // removes vidshown element after its clicked off
+        while (lightbox.firstChild) {
+            lightbox.removeChild(lightbox.firstChild)
+        }
+        lightbox.appendChild(vidShow);
+        // pause video if you click off it
+        lightbox.addEventListener('click', () => {
+            vidShow.pause();
+        });
+    });
+
+    // click off the vidshown element to hide lightbox
+    lightbox.addEventListener('click', e => {
+
+        if (e.target !== e.currentTarget) return
+
+        lightbox.classList.remove('active')
+
+
+    });
+
+
+</script>
 </body>
 
 </html>

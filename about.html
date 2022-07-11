@@ -34,10 +34,13 @@
     <!-- glider slider stuff -->
     <!-- Required Core stylesheet -->
     <link rel="stylesheet" href="glide-master/dist/css/glide.core.min.css">
+
+    <!-- vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
 </head>
 
 <body>
-
+  <div id="app">
     <!-- Header elements -->
 
     <nav id="header" class="navbar navbar-expand-md navbar-light sticky-top col-12">
@@ -45,10 +48,10 @@
             <div class="container-fluid">
                 <a id="logo" class="navbar-brand" href="./index.html"><img src="img/logo.png"></a>
 
-                <button id="menu-btn" style="padding: 0px;" class="navbar-toggler" type="button" data-toggle="collapse"
+                <button @click="handleMenu(mobile_header)" id="menu-btn" style="padding: 0px;" class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive">
-                    <span id="hamburger-menu" class="navbar-toggler-icon"></span>
-                    <span id="hamburger-menu-close" aria-hidden="true">&times;</span>
+                    <span id="hamburger-menu" class="navbar-toggler-icon" v-bind:class="!mobile_header && 'hide'"></span>
+                    <span id="hamburger-menu-close"v-bind:class="mobile_header && 'hide'" aria-hidden="true">&times;</span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
@@ -143,23 +146,9 @@
 
     </footer>
 
-    <script>
-
-        $(document).ready(function () {
-            //animate hamburger menu icon
-            $('#hamburger-menu').on('click', function () {
-                event.preventDefault();
-                $('#hamburger-menu').css({ display: 'none' });
-                $('#hamburger-menu-close').css({ display: 'block' });
-            });
-            //animate hamburger menu close icon
-            $('#hamburger-menu-close').on('click', function () {
-                event.preventDefault();
-                $('#hamburger-menu-close').css({ display: 'none' });
-                $('#hamburger-menu').css({ display: 'block' });
-            });
-        });
-    </script>
+    
+  </div>
+  <script src="./app.js"></script>
 </body>
 
 </html>

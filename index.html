@@ -61,12 +61,13 @@
     <!-- protipo font -->
     <link rel="stylesheet" href="https://use.typekit.net/ukn2vfn.css">
 
-
+    <!-- vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
     <!--  -->
     <!-- I changed this text from 'rossgriffus.com' to the text below to provide better 
             contextual information in browser tab and serp header. I was also able to use more of 
             my keywords.  -->
-    <title>Ross Griffus | Front End Developer & Designer | Vancouver, Washington</title>
+    <title>Ross Griffus | Full Stack Developer & Designer | Eugene, Oregon</title>
 </head>
 
 <!-- MicroData Schema Added -->
@@ -74,6 +75,7 @@
 
 <body itemscope itemtype="http://schema.org/Person">
 
+    <div id="app">
     <!-- title -->
     <!--  -->
     <!-- After i removed the picture and introduction to the about page, I decided to add this element
@@ -91,7 +93,7 @@
 
             <!-- I added an itemprop to indicate my intended job title. This one isn't the best description but its the best i could find. -->
 
-            <h2 itemprop="jobTitle" id="catchphrase">Front End Developer & Designer</h2>
+            <h2 itemprop="jobTitle" id="catchphrase">Full Stack Developer & Designer</h2>
         </div>
 
         <!--  Added an itemprop to indicate an image of the person type-->
@@ -99,7 +101,7 @@
                 alt="ross griffus headshot"></a>
 
     </div>
-    </div>
+    
 
     <!-- Header elements -->
 
@@ -111,10 +113,10 @@
             <div class="container-fluid">
                 <a id="logo" class="navbar-brand" href="./index.html"><img src="img/logo.png"></a>
 
-                <button id="menu-btn" style="padding: 0px;" class="navbar-toggler" type="button" data-toggle="collapse"
+                <button @click="handleMenu(mobile_header)" id="menu-btn" style="padding: 0px;" class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive">
-                    <span id="hamburger-menu" class="navbar-toggler-icon"></span>
-                    <span id="hamburger-menu-close" aria-hidden="true">&times;</span>
+                    <span id="hamburger-menu" class="navbar-toggler-icon" v-bind:class="!mobile_header && 'hide'"></span>
+                    <span id="hamburger-menu-close" v-bind:class="mobile_header && 'hide'" aria-hidden="true">&times;</span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
@@ -244,7 +246,7 @@
                                         class="btn-primary highlight-btn">View
                                         work</button></a>
                             </div>
-                            <h5 class="highlight-title">"Recent Projects"</h5>
+                           
 
                             <!-- Added prop to indicate img of work -->
                             <img itemprop="image" class="img-fluid slider-imgs" src="img/map.jpg"
@@ -272,7 +274,7 @@
                                         class="btn-primary highlight-btn">View
                                         work</button></a>
                             </div>
-                            <h5 class="highlight-title">"To-Do App"</h5>
+                            
 
                             <!-- Added itemprop to indicate image of work -->
                             <img itemprop="image" class="img-fluid slider-imgs" src="img/todo.jpg" alt="Todo list app"
@@ -301,7 +303,7 @@
                                         class="btn-primary highlight-btn">View
                                         work</button></a>
                             </div>
-                            <h5 class="highlight-title">"To-Do App"</h5>
+                            
 
                             <!-- Added itemprop to indicate image of work -->
 
@@ -346,17 +348,7 @@
 
 
                     <p class="text-center skills_content">
-                        <span itemprop="knowsAbout">JavaScript, </span>
-                        <span itemprop="knowsAbout">JQuery, </span>
-                        <span itemprop="knowsAbout">CSS3, </span>
-                        <span itemprop="knowsAbout">HTML5, </span>
-                        <span itemprop="knowsAbout">Bootstrap, </span>
-                        <span itemprop="knowsAbout">React, </span>
-                        <span itemprop="knowsAbout">Dexie.js, </span>
-                        <span itemprop="knowsAbout">Glide.js, </span>
-                        <span itemprop="knowsAbout">MapBox API, </span>
-                        <span itemprop="knowsAbout">MYSQL </span>
-
+                        <span v-for="skill in devSkills" itemprop="knowsAbout">{{ skill }} &nbsp; </span>
                     </p>
 
             </div>
@@ -371,13 +363,8 @@
                     <!-- Added knowsAbout property to each item in this list to indicate the person knows about these things -->
 
                     <p class="text-center skills_content">
-                        <span itemprop="knowsAbout">Adobe Illustrator, </span>
-                        <span itemprop="knowsAbout">After Effects, </span>
-                        <span itemprop="knowsAbout">Photoshop, </span>
-                        <span itemprop="knowsAbout">XD, </span>
-                        <span itemprop="knowsAbout">Premiere Pro, </span>
-                        <span itemprop="knowsAbout">Fresco, </span>
-                        <span itemprop="knowsAbout">Animate</span>
+                        <span v-for="skill in desSkills" itemprop="knowsAbout">{{skill}} &nbsp; </span>
+                        
 
                     </p>
 
@@ -393,13 +380,8 @@
                     <!-- Added knowsAbout property to each item in this list to indicate the person knows about these things -->
 
                     <p class="text-center skills_content">
-                        <span itemprop="knowsAbout">Slack, </span>
-                        <span itemprop="knowsAbout">Zoom, </span>
-                        <span itemprop="knowsAbout">Basecamp, </span>
-                        <span itemprop="knowsAbout">GitHub, </span>
-                        <span itemprop="knowsAbout">Google Slides, </span>
-                        <span itemprop="knowsAbout">Discord, </span>
-                        <span itemprop="knowsAbout">Microsoft Office </span>
+                        <span v-for="skill in wrkSkills" itemprop="knowsAbout">{{skill}}&nbsp; </span>
+                        
                     </p>
 
             </div>
@@ -444,32 +426,18 @@
 
     </footer>
 
-    <script>
-
-        $(document).ready(function () {
-            //animate hamburger menu icon
-            $('#hamburger-menu').on('click', function () {
-                event.preventDefault();
-                $('#hamburger-menu').css({ display: 'none' });
-                $('#hamburger-menu-close').css({ display: 'block' });
-            });
-            //animate hamburger menu close icon
-            $('#hamburger-menu-close').on('click', function () {
-                event.preventDefault();
-                $('#hamburger-menu-close').css({ display: 'none' });
-                $('#hamburger-menu').css({ display: 'block' });
-            });
-        });
-    </script>
+  </div>
+  <script src="./app.js"></script>
 
     <!-- glider slider script -->
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script>
 
         const config = {
-            autoplay: 4000,
+            autoplay: 5000,
             hoverpause: false,
-            type: "carousel"
+            type: "slider",
+            perView:1
 
         };
         new Glide('.glide', config).mount()
