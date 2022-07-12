@@ -481,15 +481,62 @@ footer p {
 
 .about-banner{
   width: 100%;
-  max-width:1350px;
+  max-width:1550px;
   background-image: url('./img/about-me-banner.jpg');
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-blend-mode:color-dodge;
-  -webkit-mask-image: linear-gradient(to top, transparent 25%, black 75%);
-  mask-image: linear-gradient(to top, transparent 25%, black 75%);
-  height:500px;
+  height:550px;
   margin:auto;
-
+  position:relative;
 }
+
+@media(max-width:990px){
+  .about-banner{
+    background-image:url('./img/about-me-bannerMobile.jpg');
+  }
+}
+
+.gradient{
+  position:absolute;
+  bottom:0px;
+  width:100%;
+  height:65%;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,.00000000000001) 0%, rgba(255,255,255,1) 100%);
+}
+
+/* .about-pic{
+  position:absolute;
+  
+  bottom:0%;
+  left:0%;
+
+} */
+
+.about-me-title{
+  font-size:2em;
+  color:black;
+  font-family: protipo, sans-serif;
+  text-align: left;
+  transform: translate(0px,-200px);
+  margin-left:25%;
+  
+}
+
+@media(max-width:606px){
+  .about-me-title{
+    margin-left:5%;
+  }
+}
+@media(max-width:475px){
+  .about-me-title{
+    font-size:1.6em;
+  }
+}
+
+.about-me-content{
+  background-color:white;
+}
+
